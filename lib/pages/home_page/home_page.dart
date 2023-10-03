@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,7 +11,9 @@ class HomePage extends StatelessWidget {
         title: Text('Home'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed('/new-contact');
+            },
             icon: const Icon(Icons.add),
           ),
         ],

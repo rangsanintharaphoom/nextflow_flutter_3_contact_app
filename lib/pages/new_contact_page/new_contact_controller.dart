@@ -1,3 +1,5 @@
+import 'package:contact_app/controllers/contact_controller.dart';
+import 'package:contact_app/models/contact_model.dart';
 import 'package:get/get.dart';
 
 class NewContactController extends GetxController {
@@ -15,5 +17,15 @@ class NewContactController extends GetxController {
   void save() {
     print('name: ${name.value}');
     print('email: ${email.value}');
+
+    var contactController = Get.find<ContactController>();
+    contactController.addContact(
+      ContactModel(
+        name.value,
+        email.value,
+      ),
+    );
+
+    Get.back();
   }
 }

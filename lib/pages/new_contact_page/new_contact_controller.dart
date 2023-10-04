@@ -3,26 +3,26 @@ import 'package:contact_app/models/contact_model.dart';
 import 'package:get/get.dart';
 
 class NewContactController extends GetxController {
-  final name = ''.obs;
-  final email = ''.obs;
+  String name = '';
+  String email = '';
 
   void onNameChanged(String value) {
-    name.value = value;
+    name = value;
   }
 
   void onEmailChanged(String value) {
-    email.value = value;
+    email = value;
   }
 
   void save() {
-    print('name: ${name.value}');
-    print('email: ${email.value}');
+    print('name: ${name}');
+    print('email: ${email}');
 
     var contactController = Get.find<ContactController>();
     contactController.addContact(
       ContactModel(
-        name.value,
-        email.value,
+        name,
+        email,
       ),
     );
 

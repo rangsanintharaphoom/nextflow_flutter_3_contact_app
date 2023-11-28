@@ -2,6 +2,8 @@ import 'package:contact_app/pages/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'pages/new_contact_page/new_contact_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -15,10 +17,26 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Nextflow Contact App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
+        // useMaterial3: true,
       ),
-      home: HomePage(),
+      initialRoute: '/',
+      getPages: [
+        // ใส่ getpage ของ home page ที่นี่
+        GetPage(
+          name: '/',
+          page: () {
+            return const HomePage();
+          },
+        ),
+        // ใส่ getpage ของ new contact page ที่นี่
+        GetPage(
+          name: '/new-contact',
+          page: () {
+            return NewContactPage();
+          },
+        ),
+      ],
       debugShowCheckedModeBanner: false,
     );
   }

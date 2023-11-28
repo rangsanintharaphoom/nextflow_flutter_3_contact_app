@@ -1,4 +1,5 @@
 import 'package:contact_app/pages/home_page/home_page.dart';
+import 'package:contact_app/pages/new_contact_page/new_contact_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,9 +17,20 @@ class MyApp extends StatelessWidget {
       title: 'Nextflow Contact App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        // useMaterial3: true,
       ),
-      home: HomePage(),
+     initialRoute: '/',
+     getPages: [
+      GetPage(name: '/', page: (){
+        return const HomePage();
+      },
+      ),
+      GetPage(name: '/new-contact', page: (){
+        return NewContactPage();
+      },
+      ),
+     ],
+     debugShowCheckedModeBanner: false,
     );
   }
 }

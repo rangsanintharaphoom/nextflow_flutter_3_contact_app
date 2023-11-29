@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/',
           page: () {
-            return const HomePage();
+            return HomePage();
           },
         ),
         //ใส่ getpage ของ new contact page ที่นี่

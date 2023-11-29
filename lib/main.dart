@@ -16,13 +16,13 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Nextflow Contact App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellowAccent.shade400),
         // useMaterial3: true,
       ),
      initialRoute: '/',
      getPages: [
       GetPage(name: '/', page: (){
-        return const HomePage();
+        return HomePage();
       },
       ),
       GetPage(name: '/new-contact', page: (){

@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Nextflow Contact App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 30, 233, 84)),
         // useMaterial3: true,
       ),
       initialRoute: '/',
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/',
           page: () {
-            return const HomePage();
+            return HomePage();
           },
         ),
         // ใส่ getpage ของ new contact page ที่นี่

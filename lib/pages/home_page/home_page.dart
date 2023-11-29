@@ -1,41 +1,61 @@
+import 'package:contact_app/controllers/conttact_controllrt.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  final ContactController controller = Get.put(ContactController());
+
+  HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: const Text('Home'),
         centerTitle: true,
-        //เพิ่มปุ่ม add ใน AppBar เพื่อไปยังหน้า NewContactPage
         actions: [
           IconButton(
             onPressed: () {
               Get.toNamed('/new-contact');
             },
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
           ),
         ],
       ),
-      //เพิ่มปุ่ม ลูกศร ใน AppBar เพื่อไปยังหน้า main_page
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Home Page'),
-            SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                Get.toNamed('/main');
-              },
-              child: Text('Go to Main Page'),
-            ),
-          ],
-        ),
-      ),
+      body: Obx(() {
+        if (controller.contacts.isEmpty) {
+          return const Center(
+            child: Text('กดปุ่ม + เพื่อเพิ่มข้อมูล'),
+          );
+        } else {
+          return ListView.builder(
+            itemCount: controller.contacts.length,
+            itemBuilder: (BuildContext context, int index) {
+              var contact = controller.contacts[index];
+
+              //return Text('$index : ${contact.name} ${contact.email}');
+              return ListTile(
+                title: Text(contact.name),
+                subtitle: Text(contact.email),
+                //CircleAvatar จะแสดงรูปภาพในรูปวงกลม
+                leading: CircleAvatar(
+                  child: Text(contact.name[0]),
+                ),
+                trailing: IconButton(
+                  onPressed: () {
+                    // controller.deleteContact(contact.id);
+                  },
+                  //icon delete
+                  icon: const Icon(Icons.delete),
+                ),
+                onTap: () {
+                  Get.toNamed('/edit-contact', arguments: contact);
+                },
+              );
+            },
+          );
+        }
+      }),
     );
   }
 }
